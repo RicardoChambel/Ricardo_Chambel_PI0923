@@ -8,27 +8,27 @@
 ligado = True
 
 while ligado:
-    print("\n======= MENU PRINCIPAL =======")
-    print("1. Analisar números até 1")
-    print("2. Calculadora")
-    print("3. Sair")
+    print("\n------ MENU -------")
+    print("[1] Analisar numeros de x ate 1")
+    print("[2] Calculadora")
+    print("[3] Sair")
 
-    opcao = input("Escolha uma opção: ")
+    opcao = input("Escolha ->")
 
     if opcao == '1':
         while True:
             try:
-                valor = int(input("Insira um valor de 1 a 30000: "))
+                valor = int(input("Insira um valor (x) de 1 a 30000 ->"))
                 if 1 <= valor <= 30000:
                     break
                 else:
-                    print("Valor fora do intervalo!")
+                    print("!! Valor fora do intervalo!!")
             except ValueError:
-                print("Entrada inválida!")
+                print("!! Entrada invalida!!")
 
         contador = 0
         for i in range(valor, 0, -1):
-            print(f"\n--- Análise do número {i} ---")
+            print(f"\n--- Numero {i} ---")
 
             # Verificar se é primo
             primo = True
@@ -44,7 +44,7 @@ while ligado:
                         primo = False
                         break
 
-            print("-- É numero primo" if primo else "-- Não é numero primo")
+            print("-- É numero primo" if primo else "-- Nao é numero primo")
 
             # Divisores
             divs = []
@@ -66,65 +66,65 @@ while ligado:
 
     elif opcao == '2':
         while True:
-            print("\n--- CALCULADORA ---")
-            print("1. Adição")
-            print("2. Subtração")
-            print("3. Multiplicação")
-            print("4. Divisão")
-            print("5. Tabuada")
-            print("6. Voltar ao menu principal")
+            print("\n------- CALCULADORA -------")
+            print("[1] Adicao (+)")
+            print("[2] Subtracao (-)")
+            print("[3] Multiplicacao (*)")
+            print("[4] Divisao (/)")
+            print("[5] Tabuada")
+            print("[6] Voltar ao menu principal")
 
-            escolha = input("Escolha uma opção: ")
+            escolha = input("Escolha uma opcao ->")
 
             if escolha in ['1', '2', '3', '4']:
                 try:
-                    a = float(input("Primeiro número: "))
-                    b = float(input("Segundo número: "))
+                    a = float(input("Primeiro numero ->"))
+                    b = float(input("Segundo numero ->"))
                     if escolha == '1':
-                        print(f"Resultado: {a + b}")
+                        print(f"-- Resultado: {a + b}")
                     elif escolha == '2':
-                        print(f"Resultado: {a - b}")
+                        print(f"-- Resultado: {a - b}")
                     elif escolha == '3':
-                        print(f"Resultado: {a * b}")
+                        print(f"-- Resultado: {a * b}")
                     elif escolha == '4':
                         if b == 0:
-                            print("Erro: Divisão por zero!")
+                            print("!! Erro: Divisao por zero!!")
                         else:
-                            print(f"Resultado: {a / b}")
+                            print(f"-- Resultado: {a / b}")
                 except ValueError:
-                    print("Entrada inválida!")
+                    print("!! Entrada invalida!!")
 
             elif escolha == '5':
                 while True:
                     try:
-                        maximo = int(input("Gerar tabuada até que número? (1 a 1000): "))
+                        maximo = int(input("Gerar tabuada ate que numero? (1 a 1000) -> "))
                         if 1 <= maximo <= 1000:
                             break
                         else:
-                            print("Valor fora do intervalo!")
+                            print("!! Insira um valor entre 1 e 1000!!")
                     except ValueError:
-                        print("Entrada inválida!")
+                        print("!! Entrada invalida!!")
 
                 contador_tabuada = 0
                 for i in range(1, maximo + 1):
                     print(f"\nTabuada do {i}")
                     for j in range(1, 11):
-                        print(f"{i} x {j} = {i*j}")
+                        print(f"-- {i} x {j} = {i*j}")
 
                     contador_tabuada += 1
                     if contador_tabuada % 20 == 0:
-                        continuar = input("\nDeseja continuar? (s/n): ").lower()
+                        continuar = input("\nDeseja continuar? (s/n) -> ").lower()
                         if continuar != 's':
                             break
 
             elif escolha == '6':
                 break
             else:
-                print("Opção inválida!")
+                print("!! Opcao invalida!!")
 
     elif opcao == '3':
-        print("Até à próxima!")
+        print("-- Ate a proxima!")
         ligado = False
 
     else:
-        print("Opção inválida!")
+        print("!! Opcao invalida!!")

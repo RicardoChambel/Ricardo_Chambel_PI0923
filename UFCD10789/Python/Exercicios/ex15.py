@@ -2,20 +2,25 @@
 # código correspondente. 
 # Dispor de 20 em 20 com a condição de continuação ou saída do programa.
 
-while(True):
-    print("\n")
-    inicio = 0
-    fim = 255
-    passo = 20
+disp = 0
 
-    while inicio < fim:
-        for i in range(inicio, min(inicio + passo, fim+1)):
-            try:
-                print(f"Código {i} = '{chr(i)}'")
-            except:
-                print(f"Código {i} = Não representável")
-
-        inicio += passo
-        escolha = input("\nPrima Enter para continuar ou escreva 'sair' para terminar: ")
-        if escolha.lower() == 'sair':
+while disp < 256:
+    for j in range(disp, disp + 20):
+        if j > 255:
             break
+
+        valor = chr(j)
+        if valor.isprintable():
+            print("Código", j, "=", valor)
+        else:
+            print("Código", j, "= (não é possivel mostrar)")
+            
+    disp += 20
+
+    resposta = input("\nPrima Enter para continuar ou escreva 'sair' para terminar: ")
+    if resposta.lower() == "sair":
+        break
+
+
+
+

@@ -24,7 +24,7 @@ while True:
     print("[2] Mostrar Clientes")
     print("[3] Procurar Cliente por Número")
     print("[4] Sair")
-    escolha = input("Escolha uma opção ->")
+    escolha = input("Opcao ->")
 
     if escolha == "1":
         print("\n--- Inserir Novo Cliente ---")
@@ -50,7 +50,7 @@ while True:
                 if valorCompra >= 0:
                     compra_valida = True
                 else:
-                    print("!! Valor deve ser positivo !!")
+                    print("!! O valor tem de ser positivo !!")
             except ValueError:
                 print("!! Entrada inválida !!")
 
@@ -89,10 +89,10 @@ while True:
                 break
 
     elif escolha == "3":
-        print("\n--- Buscar Cliente ---")
+        print("\n--- Procurar Cliente ---")
         encontrado = False
         try:
-            num_busca = int(input("Digite o número do cliente: "))
+            num_busca = int(input("Insira o número do cliente: "))
             for cliente in clientes:
                 if cliente["numcli"] == num_busca:
                     print(f"\n-- Nome: {cliente['nome']}")

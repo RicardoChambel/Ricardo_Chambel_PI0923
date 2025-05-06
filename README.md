@@ -16,7 +16,7 @@
 
 ###
 
-<h3 align="left">🛠  GIT | Configurar nome e email</h3>
+<h1 align="left">🛠  GIT | Configurar nome e email</h1>
 
 ###
 

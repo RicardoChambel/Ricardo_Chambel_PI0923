@@ -4,45 +4,63 @@
 # TRANSFORMAR O TEXTO .TXT PARA UM .JSON
 # VERIFICAR DESCRIÇÕES TODAS DO FICHEIRO .JSON
 # ENCONTRAR O FICHEIRO CUJAS DESCRIÇÕES TODAS TENHAM ROGÉLIO 
-# TRANSLATOR: https://jsonlint.com/
 
 import requests
+import json
+import os
 
-ficheiros_ids = ["id_1.txt","id_2.txt","id_3.txt","id_4.txt","id_5.txt"]
+ficheiros_ids = ["id_1.txt", "id_2.txt", "id_3.txt", "id_4.txt", "id_5.txt"]
 user_ids = []
 
-# METER OS IDS TODOS NO FICHEIRO DE IDS ENCONTRADOS
-with open("ids_encontrados.txt", "r") as f:
-    for linha in f:
-        linha = linha.strip()
-        if linha.isdigit():
-            user_ids.append(int(linha))
+# 1. LER IDS DOS FICHEIROS
+for ficheiro in ficheiros_ids:
+    with open(ficheiro, "r") as f:
+        for linha in f:
+            linha = linha.strip()
+            if linha.isdigit():
+                user_ids.append(int(linha))
 
-print(user_ids)
+# GUARDAR OS IDS NUM FICHEIRO
+with open("ids_encontrados.txt", "w") as f_out:
+    for user_id in user_ids:
+        f_out.write(f"{user_id}\n")
 
-#id = 7194
-#f = open("id_1.txt", "a")
-#for id in range(7194, 8000):
-#  print("---- A procurar no ID: ", id)
-#  resposta = requests.get(f'https://trainingserver.atec.pt/TrainingServer/Mulberry/JSON/Controls/Calendar/getCalendarDataSource.ashx?command=_SelectAllSchedulesDataSetGivenByUserId&oId={id}&idField=DataValueField&titleField=DataTextField&startDateField=DataStartField&endDateField=DataEndField&backgroundColorField=&textColorField=textcolor&eventColorField=color&description=description&picField=pic&urlField=url&start=1747004400&end=1747609200&_=1747127413405')
+print(f"[DEBUG] IDs encontrados: {user_ids}")
 
-#  if "Sessão como Formador" in resposta.text and ("Rogelio" in resposta.text or "Rogélio" in resposta.text):
-#    user_ids.append(id)
-#    f.write(str(id)+'\n')
-#  else:
-#    print("[x] O Formador Rogélio não foi encontrado como formador no horario do ID: ", id)
+# VERIFICAR CADA ID
+id_confirmado = []
 
-#f.close
-#print("-- ID's Encontrados --")
-#for i in user_ids:
-#  print(i,'\n')
+for id in user_ids:
+    print(f"--- A verificar o ID {id} ---")
+    
+    url = f'https://trainingserver.atec.pt/TrainingServer/Mulberry/JSON/Controls/Calendar/getCalendarDataSource.ashx?command=_SelectAllSchedulesDataSetGivenByUserId&oId={id}&idField=DataValueField&titleField=DataTextField&startDateField=DataStartField&endDateField=DataEndField&backgroundColorField=&textColorField=textcolor&eventColorField=color&description=description&picField=pic&urlField=url&start=1747004400&end=1747609200&_=1747127413405'
+    
+    resposta = requests.get(url)
 
+    try:
+        dados = json.loads(resposta.content.decode("utf-8"))
+    except Exception as e:
+        print(f"Erro a fazer parsing do JSON do ID {id}: {e}")
+        continue
 
-# TRANSFORMAR RESPOSTA PARA .TXT COM ENCODING CORRETO
-#id = 9838
-#f = open("verify.txt", "wb")
-#print("---- A importar o request do ID ", id)
-#resposta = requests.get(f'https://trainingserver.atec.pt/TrainingServer/Mulberry/JSON/Controls/Calendar/getCalendarDataSource.ashx?command=_SelectAllSchedulesDataSetGivenByUserId&oId={id}&idField=DataValueField&titleField=DataTextField&startDateField=DataStartField&endDateField=DataEndField&backgroundColorField=&textColorField=textcolor&eventColorField=color&description=description&picField=pic&urlField=url&start=1747004400&end=1747609200&_=1747127413405')
-#f.write(resposta.content)
-#f.close
+    # VERIFICAR TODAS AS DESCRIÇÕES
+    todas_descricoes_com_rogelio = True
+    for evento in dados:
+        descricao = evento.get("description", "")
+        if "Rogélio" not in descricao:
+            todas_descricoes_com_rogelio = False
+            break
 
+    if todas_descricoes_com_rogelio and len(dados) > 0:
+        print(f"!! O ID {id} é do Rogélio !!")
+        id_confirmado.append(id)
+        break
+    else:
+        print(f"[x] O ID {id} não é do Rogélio")
+
+# GUARDAR IDS CONFIRMADOS
+with open("id_rogelio.txt", "w") as f_rogelio:
+    for id in id_confirmado:
+        f_rogelio.write(f"{id}\n")
+
+print(f"\n✅ ID do Rogélio: {id_confirmado}")

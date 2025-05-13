@@ -11,7 +11,7 @@ import json
 ficheiros_ids = ["id_1.txt", "id_2.txt", "id_3.txt", "id_4.txt", "id_5.txt"]
 user_ids = []
 
-# 1. LER IDS DOS FICHEIROS
+# LER OS IDS DOS FICHEIROS
 for ficheiro in ficheiros_ids:
     with open(ficheiro, "r") as f:
         for linha in f:
@@ -19,7 +19,7 @@ for ficheiro in ficheiros_ids:
             if linha.isdigit():
                 user_ids.append(int(linha))
 
-# GUARDAR OS IDS NUM FICHEIRO
+# GUARDAR OS IDS NUM SÓ FICHEIRO
 with open("ids_encontrados.txt", "w") as f_out:
     for user_id in user_ids:
         f_out.write(f"{user_id}\n")

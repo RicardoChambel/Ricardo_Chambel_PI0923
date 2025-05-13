@@ -7,7 +7,6 @@
 
 import requests
 import json
-import os
 
 ficheiros_ids = ["id_1.txt", "id_2.txt", "id_3.txt", "id_4.txt", "id_5.txt"]
 user_ids = []

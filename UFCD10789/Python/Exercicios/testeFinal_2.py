@@ -39,9 +39,9 @@ while True:
                 if nif >= 100000000 and nif <= 999999999:
                     nif_valido = True
                 else:
-                    print("!! NIF inválido !!")
+                    print("!! NIF invalido !!")
             except ValueError:
-                print("!! Entrada inválida !!")
+                print("!! Entrada invalida !!")
 
         compra_valida = False
         while not compra_valida:
@@ -52,7 +52,7 @@ while True:
                 else:
                     print("!! O valor tem de ser positivo !!")
             except ValueError:
-                print("!! Entrada inválida !!")
+                print("!! Entrada invalida !!")
 
         desconto = calcular_desconto(valorCompra)
 
@@ -83,8 +83,8 @@ while True:
             print(f"-- NIF: {cliente['nif']}")
             print(f"-- Compra: {cliente['valorCompra']:.2f}€")
             print(f"-- Desconto: {cliente['desconto']:.2f}€")
-            print(f"-- Dívida Final: {cliente['divida']:.2f}€")
-            cont = input("\nMostrar próximo? (s/n) ->").lower()
+            print(f"-- Divida Final: {cliente['divida']:.2f}€")
+            cont = input("\nMostrar proximo? (s/n) ->").lower()
             if cont != 's':
                 break
 
@@ -101,17 +101,17 @@ while True:
                     print(f"-- NIF: {cliente['nif']}")
                     print(f"-- Valor da Compra: {cliente['valorCompra']:.2f}€")
                     print(f"-- Desconto: {cliente['desconto']:.2f}€")
-                    print(f"-- Dívida Final: {cliente['divida']:.2f}€")
+                    print(f"-- Divida Final: {cliente['divida']:.2f}€")
                     encontrado = True
                     break
             if not encontrado:
-                print("!! Cliente não encontrado !!")
+                print("!! Cliente nao encontrado !!")
         except ValueError:
-            print("!! Número inválido !!")
+            print("!! Numero invalido !!")
 
     elif escolha == "4":
         print("-- Programa terminado")
         break
 
     else:
-        print("!! Opção inválida !!")
+        print("!! Opcao invalida !!")

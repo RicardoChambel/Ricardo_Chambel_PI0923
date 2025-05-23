@@ -22,31 +22,34 @@ Observações:
     O programa deve ser estruturado com funções.
     Use uma lista para armazenar os dados dos fornecedores. 
 """
-forList = []
+fornecedoresList = []
 
 def insertForn():
-    print("\n| Construção Banana Inc. |")
+    print("\n| Construcao Banana Inc. |")
     print("- Inserir dados de fornecedor -")
-    numFor=len(forList)
+    numFor=len(fornecedoresList) + 1
     # Nome
     while True:
         try:
             nome=input("| Novo Nome ->> ")
             break
         except:
-            print("--!! O valor inserido não é válido !!--\n")
+            print("--!! Valor inserido invalido !!--\n")
     # Endereco
     while True:
         try:
             endereco=input("| Novo Endereco ->> ")
             break
         except:
-            print("--!! O valor inserido não é válido !!--\n")
+            print("--!! Valor inserido invalido !!--\n")
     # Telefone
     while True:
         try:
             tele=int(input("| Novo Telefone [formato: 000000000] ->> "))
-            break
+            if tele >= 100000000 and tele <= 999999999:
+                break
+            else:
+                print("--!! Telefone invalido !!--\n")
         except:
             print("--!! O valor inserido não é válido !!--\n")
     # NIF
@@ -55,17 +58,16 @@ def insertForn():
             nif=int(input("| Novo NIF [formato: 000000000] ->> "))
             break
         except:
-            print("--!! O valor inserido não é válido !!--\n")
+            print("--!! Valor inserido invalido !!--\n")
     # Valor Fornecido
     while True:
         try:
             valorFornecido=float(input("| Valor Fornecido [formato: 000.0] ->> "))
             break
         except:
-            print("--!! O valor inserido não é válido !!--\n")
+            print("--!! Valor inserido invalido !!--\n")
     # Desconto
     desconto = 0
-    valorFinal = 0
     if 1000 <= valorFornecido <= 5000:
         desconto = valorFornecido*(8/100)
         valorFinal = valorFornecido - desconto
@@ -81,6 +83,8 @@ def insertForn():
         valorFinal = valorFornecido - desconto
         print(f"| Desconto aplicado: 18%")
         print(f"| Valor Final: {valorFinal}€")
+    else:
+        valorFinal = valorFornecido
     
     novo_fornecedor = {
         "numFor":numFor,
@@ -92,7 +96,7 @@ def insertForn():
         "valorFinal":valorFinal
         
     }
-    forList.append(novo_fornecedor)
+    fornecedoresList.append(novo_fornecedor)
     
     print("\n| -- Dados Do Novo Fornecedor Guardado -- |")
     print(f"| Numero de Fornecedor -> {numFor}")
@@ -106,14 +110,17 @@ def insertForn():
     
     input("-- ENTER para voltar --")
 
-def listForns():
-    print("\n| Construção Banana Inc. |")
+def listaForns():
+    print("\n| Construcao Banana Inc. |")
     print("- Listar fornecedores -")
-    for forn in forList:
-        print(forn)
-    
-    
-    
+    for forn in fornecedoresList:
+        print(f"\n| Fornecedor nº{forn['numFor']}")
+        print(f"> Nome: {forn['nome']}")
+        print(f"> Endereco: {forn['endereco']}")
+        print(f"> Telefone: {forn['telefone']}")
+        print(f"> NIF: {forn['nif']}")
+        print(f"> Valor Fornecido: {forn['valorFornecido']}€")
+        print(f"> Valor Final: {forn['valorFinal']}€")
 
 def menu():
     
@@ -125,19 +132,37 @@ def menu():
     try:
         resp = int(input("->"))
     except:
-        print("\n--!! O valor inserido não é válido !!--\n")
+        print("\n--!! Valor inserido invalido !!--\n")
         return
     if resp == 1:
         insertForn()
     elif resp == 2:
-        listForns()
+        listaForns()
     elif resp == 3:
-        print("\n| Procurar fornecedor por numero (NumFor) |")
+        print("\n--- Procurar Cliente ---")
+        encontrado = False
+        try:
+            num_busca = int(input("Insira o número do fornecedor: "))
+            for forn in fornecedoresList:
+                if forn["numFor"] == num_busca:
+                    print(f"\n| Fornecedor nº{forn['numFor']}")
+                    print(f"> Nome: {forn['nome']}")
+                    print(f"> Endereco: {forn['endereco']}")
+                    print(f"> Telefone: {forn['telefone']}")
+                    print(f"> NIF: {forn['nif']}")
+                    print(f"> Valor Fornecido: {forn['valorFornecido']:.2f}€")
+                    print(f"> Valor Final: {forn['valorFinal']:.2f}€")
+                    encontrado = True
+                    break
+            if not encontrado:
+                print("!! Fornecedor nao encontrado !!")
+        except ValueError:
+            print("!! Valor inserido invalido !!")
     elif resp==0:
-        print("\n| Até à próxima! |\n")
+        print("\n| Ate a proxima! |\n")
         return True
     else:
-        print("\n-- !! Opção inválida !! --\n")
+        print("\n-- !! Opcao invalida !! --\n")
         menu()
         
 while True:

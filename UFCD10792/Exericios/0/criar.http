@@ -1,0 +1,7 @@
+POST http://localhost:2525/imposters
+
+{
+  "port": 5000,
+  "protocol": "http",
+  "name": "Exercicio 0"
+}

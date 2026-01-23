@@ -1,0 +1,71 @@
+{"level":"info","message":"[mb:2525] mountebank v2.9.2 now taking orders - point your browser to http://localhost:2525/ for help","timestamp":"2026-01-23T13:33:01.585Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:33:17.435Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:33:18.381Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2026-01-23T13:33:21.449Z"}
+{"level":"info","message":"[http:5000 Imposter] Open for business...","timestamp":"2026-01-23T13:33:21.452Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:33:22.936Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000/","timestamp":"2026-01-23T13:34:29.790Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000/test","timestamp":"2026-01-23T13:34:34.096Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:34:37.168Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:31101 => GET /","timestamp":"2026-01-23T13:35:43.442Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:35:43.443Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:31102 => GET /test","timestamp":"2026-01-23T13:35:46.079Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:35:46.080Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:31103 => GET /test","timestamp":"2026-01-23T13:35:46.593Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:35:46.593Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:31104 => GET /test","timestamp":"2026-01-23T13:35:46.763Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:35:46.764Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:31105 => GET /test","timestamp":"2026-01-23T13:35:46.922Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:35:46.922Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:31106 => GET /test","timestamp":"2026-01-23T13:35:48.949Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:35:48.950Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:8647 => GET /test","timestamp":"2026-01-23T13:36:26.801Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:36:26.802Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:8649 => DELETE /","timestamp":"2026-01-23T13:36:33.933Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:36:33.933Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:8650 => GET /test","timestamp":"2026-01-23T13:36:36.550Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:36:36.550Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:8651 => GET /test","timestamp":"2026-01-23T13:36:37.062Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:36:37.063Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:8409 => DELETE /","timestamp":"2026-01-23T13:38:33.870Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:38:33.870Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5000","timestamp":"2026-01-23T13:38:41.159Z"}
+{"level":"info","message":"[http:5000 Imposter] Ciao for now","timestamp":"2026-01-23T13:38:41.161Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5000","timestamp":"2026-01-23T13:38:43.269Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:38:47.598Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2026-01-23T13:39:05.625Z"}
+{"level":"info","message":"[http:5000 Imposter] Open for business...","timestamp":"2026-01-23T13:39:05.626Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:65485 => GET /qualquer-caminho","timestamp":"2026-01-23T13:39:08.633Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:39:08.634Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:39:32.437Z"}
+{"level":"info","message":"[http:5000 Imposter] ::ffff:127.0.0.1:47539 => GET /test","timestamp":"2026-01-23T13:39:57.507Z"}
+{"level":"info","message":"[http:5000 Imposter] no predicate match, using default response","timestamp":"2026-01-23T13:39:57.508Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:40:01.722Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:40:46.173Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2026-01-23T13:41:17.936Z"}
+{"level":"error","message":"[mb:2525] error creating imposter: {\"code\":\"EADDRINUSE\",\"errno\":-4091,\"syscall\":\"listen\",\"address\":\"::\",\"port\":5000,\"message\":\"listen EADDRINUSE: address already in use :::5000\",\"name\":\"Error\",\"stack\":\"Error: listen EADDRINUSE: address already in use :::5000\\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\\n    at listenInCluster (node:net:1994:12)\\n    at Server.listen (node:net:2099:7)\\n    at C:\\\\Users\\\\rikic\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\@mbtest\\\\mountebank\\\\src\\\\models\\\\http\\\\baseHttpServer.js:172:20\\n    at new Promise (<anonymous>)\\n    at create (C:\\\\Users\\\\rikic\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\@mbtest\\\\mountebank\\\\src\\\\models\\\\http\\\\baseHttpServer.js:158:16)\\n    at Object.createServer (C:\\\\Users\\\\rikic\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\@mbtest\\\\mountebank\\\\src\\\\models\\\\protocols.js:35:34)\\n    at C:\\\\Users\\\\rikic\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\@mbtest\\\\mountebank\\\\src\\\\models\\\\imposter.js:198:22\\n    at new Promise (<anonymous>)\\n    at Object.create (C:\\\\Users\\\\rikic\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\@mbtest\\\\mountebank\\\\src\\\\models\\\\imposter.js:192:12)\"}","timestamp":"2026-01-23T13:41:17.937Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5000","timestamp":"2026-01-23T13:41:23.035Z"}
+{"level":"info","message":"[http:5000 Imposter] Ciao for now","timestamp":"2026-01-23T13:41:23.036Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2026-01-23T13:41:30.394Z"}
+{"level":"info","message":"[http:5000 Imposter] Open for business...","timestamp":"2026-01-23T13:41:30.395Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:41:55.978Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000/teste","timestamp":"2026-01-23T13:42:16.333Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:42:19.381Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:46:11.008Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:46:15.343Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:46:17.148Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:46:40.679Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:46:41.737Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5000","timestamp":"2026-01-23T13:46:56.522Z"}
+{"level":"info","message":"[http:5000 Imposter] Ciao for now","timestamp":"2026-01-23T13:46:56.522Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5000","timestamp":"2026-01-23T13:46:58.597Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5000","timestamp":"2026-01-23T13:47:05.957Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5001","timestamp":"2026-01-23T13:47:13.052Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5001","timestamp":"2026-01-23T13:47:14.311Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5001","timestamp":"2026-01-23T13:47:14.981Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5001","timestamp":"2026-01-23T13:47:15.177Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2026-01-23T13:47:32.876Z"}
+{"level":"info","message":"[http:5000 Exercicio 0] Open for business...","timestamp":"2026-01-23T13:47:32.878Z"}
+{"level":"info","message":"[mb:2525] GET /imposters/5000","timestamp":"2026-01-23T13:47:37.516Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:47:40.341Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2026-01-23T13:48:41.339Z"}

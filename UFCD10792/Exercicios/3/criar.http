@@ -1,0 +1,30 @@
+POST http://localhost:2525/imposters
+
+{
+  "port": 5003,
+  "protocol": "http",
+  "name": "Exercicio 3",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/cars", "method": "GET" } },
+            { "not": { "exists": { "query": { "brand": true } } } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\"results\": []}"
+          }
+        }
+      ]
+    }
+  ]
+}

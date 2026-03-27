@@ -1,0 +1,31 @@
+POST http://localhost:2525/imposters
+
+{
+  "port": 5006,
+  "protocol": "http",
+  "name": "Exercicio 6+7",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/users", "method": "POST" } },
+            { "equals": { "headers": { "Content-Type": "application/json" } } },
+            { "contains": { "body": "\"email\":\"exists@example.com\"" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 409,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\"error\": \"email_exists\", \"message\": \"O email fornecido já está registado.\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+POST http://localhost:2525/imposters
+
+{
+  "port": 5006,
+  "protocol": "http",
+  "name": "Exercicio 6+7",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/users", "method": "POST" } },
+            { "equals": { "headers": { "Content-Type": "application/json" } } },
+            { "not": { "contains": { "body": "\"email\":\"exists@example.com\"" } } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 201,
+            "headers": {
+              "Content-Type": "application/json",
+              "Location": "/api/users/123"
+            },
+            "body": "{\"id\": 123, \"status\": \"created\", \"message\": \"Utilizador criado com sucesso.\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

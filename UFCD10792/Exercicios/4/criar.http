@@ -1,0 +1,31 @@
+POST http://localhost:2525/imposters
+
+{
+  "port": 5004,
+  "protocol": "http",
+  "name": "Exercicio 4+5",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/login", "method": "POST" } },
+            { "equals": { "headers": { "Content-Type": "application/json" } } },
+            { "deepEquals": { "body": { "username": "admin", "password": "secret" } } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\"status\": \"ok\", \"token\": \"validtoken\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

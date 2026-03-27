@@ -1,0 +1,30 @@
+POST http://localhost:2525/imposters
+
+{
+  "port": 5002,
+  "protocol": "http",
+  "name": "Exercicio 2",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/cars", "method": "GET" } },
+            { "equals": { "query": { "brand": "Toyota" } } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\"brand\": \"Toyota\", \"results\": [{\"id\": 1, \"modelo\": \"Corolla\", \"preco\": 120000}, {\"id\": 2, \"modelo\": \"RAV4\", \"preco\": 180000}]}"
+          }
+        }
+      ]
+    }
+  ]
+}

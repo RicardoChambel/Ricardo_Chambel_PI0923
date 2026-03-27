@@ -1,0 +1,31 @@
+POST http://localhost:2525/imposters
+
+{
+  "port": 5005,
+  "protocol": "http",
+  "name": "Exercicio 4+5",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/login", "method": "POST" } },
+            { "equals": { "headers": { "Content-Type": "application/json" } } },
+            { "not": { "deepEquals": { "body": { "username": "admin", "password": "secret" } } } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 401,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\"error\": \"invalid_credentials\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

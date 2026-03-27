@@ -16,15 +16,21 @@
 
 ###
 
-<h2 align="left">🛠  GIT | Configurar nome, email e proxy</h2>
+<h2 align="left">🛠  GIT | Configurar nome e email</h2>
 
 ###
 
 <ul align="left">
-<li>git config --global http.proxy [proxy]</li>
 <li>git config --global user.name "[nome]"</li>
 <li>git config --global user.email "[email]"</li>
-<h3>Remover variaveis</h3>
+</ul>
+
+###
+
+<h3 align="left">Remover variaveis</h3>
+
+###
+<ul>
 <li>git config --global --unset http.proxy</li>
 <li>git config --global --unset https.proxy</li>
 <li>git config --global --unset user.name</li>

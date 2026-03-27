@@ -24,7 +24,6 @@
 <li>git config --global http.proxy [proxy]</li>
 <li>git config --global user.name "[nome]"</li>
 <li>git config --global user.email "[email]"</li>
-<br>
 <h3>Remover variaveis</h3>
 <li>git config --global --unset http.proxy</li>
 <li>git config --global --unset https.proxy</li>

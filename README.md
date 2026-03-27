@@ -20,6 +20,16 @@
 
 ###
 
-<p align="left">git config --global user.name "Nome Aqui"<br>git config --global user.email (email aqui)</p>
+<p>git config --global user.name "[nome]"</p>
+<p>git config --global user.email "[email]"</p>
 
 ###
+
+<h2 align="left">❌ GIT | Remover variaveis</h2>
+
+###
+
+<p>git config --global --unset http.proxy</p>
+<p>git config --global --unset https.proxy</p>
+<p>git config --global --unset user.name</p>
+<p>git config --global --unset user.email</p>

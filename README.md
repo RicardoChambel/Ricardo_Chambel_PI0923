@@ -27,10 +27,11 @@
 
 ###
 
-<h3 align="left">Remover variaveis</h3>
+<h2 align="left">Remover variaveis</h2>
 
 ###
-<ul>
+
+<ul align="left">
 <li>git config --global --unset http.proxy</li>
 <li>git config --global --unset https.proxy</li>
 <li>git config --global --unset user.name</li>

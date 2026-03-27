@@ -23,3 +23,13 @@
 <p align="left">git config --global user.name "Nome Aqui"<br>git config --global user.email (email aqui)</p>
 
 ###
+
+<ul align="left">
+<li>git config --global --unset http.proxy</li>
+<li>git config --global --unset https.proxy</li>
+<li>git config --global --unset user.name</li>
+<li>git config --global --unset user.email</li>
+<li>git config --global http.proxy [proxy]</li>
+<li>git config --global user.name "[nome]"</li>
+<li>git config --global user.email "[email]"</li>
+</ul>

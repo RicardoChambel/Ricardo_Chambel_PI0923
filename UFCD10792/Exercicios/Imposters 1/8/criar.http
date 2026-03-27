@@ -1,0 +1,31 @@
+POST http://localhost:2525/imposters
+
+{
+  "port": 5007,
+  "protocol": "http",
+  "name": "Exercicio 8",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/temperature", "method": "POST" } },
+            { "equals": { "headers": { "Content-Type": "application/json" } } },
+            { "not": { "contains": { "body": "\"value\"" } } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 400,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\"error\": \"missing_field\", \"message\": \"O campo 'value' é obrigatório.\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+POST http://localhost:5007/api/temperature
+Content-Type: application/json
+
+{
+  "value": 25,
+  "unit": "Celsius"
+}

@@ -16,11 +16,7 @@
 
 ###
 
-<h2 align="left">🛠  GIT | Configurar nome e email</h2>
-
-###
-
-<p align="left">git config --global user.name "Nome Aqui"<br>git config --global user.email (email aqui)</p>
+<h2 align="left">🛠  GIT | Configurar nome, email e proxy</h2>
 
 ###
 

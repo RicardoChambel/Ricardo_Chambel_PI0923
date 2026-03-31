@@ -1,0 +1,55 @@
+### 1. Listar Alunos
+GET http://localhost:5020/api/alunos
+
+### 2. Adicionar Aluno (Sucesso)
+POST http://localhost:5020/api/alunos
+Content-Type: application/json
+
+{
+    "nome": "Ricardo Costa",
+    "idade": 12,
+    "curso": "Informatica"
+}
+
+### 3. Adicionar Aluno (Erro: Idade < 10)
+POST http://localhost:5020/api/alunos
+Content-Type: application/json
+
+{
+    "nome": "Bebé Daniel",
+    "idade": 5,
+    "curso": "Informatica"
+}
+
+### 4. Adicionar Aluno (Erro: Curso Inexistente)
+POST http://localhost:5020/api/alunos
+Content-Type: application/json
+
+{
+    "nome": "Ana Luísa",
+    "idade": 15,
+    "curso": "Inexistente"
+}
+
+### 5. Atualizar Aluno Existente (ID 1)
+PUT http://localhost:5020/api/alunos/1
+Content-Type: application/json
+
+{
+    "idade": 16
+}
+
+### 6. Atualizar Aluno Inexistente (ID 99) -> Deve dar 404
+PUT http://localhost:5020/api/alunos/99
+Content-Type: application/json
+
+{
+    "idade": 16
+}
+
+### 7. Remover Aluno Sem Admin (Erro 403)
+DELETE http://localhost:5020/api/alunos/1
+
+### 8. Remover Aluno Com Admin (Sucesso 204 No Content)
+DELETE http://localhost:5020/api/alunos/1
+Role: Admin

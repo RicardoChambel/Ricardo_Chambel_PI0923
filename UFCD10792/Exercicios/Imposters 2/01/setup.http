@@ -1,0 +1,70 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 5020,
+  "protocol": "http",
+  "name": "API Gestao de Alunos",
+  "stubs": [
+    {
+      "_comment": "POST - Erro: Idade < 10",
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/alunos" } },
+        { "matches": { "body": "\"idade\"\\s*:\\s*([0-9])\\b" } }
+      ],
+      "responses": [{ "is": { "statusCode": 400, "body": { "error": "Idade mínima não atingida" } } }]
+    },
+    {
+      "_comment": "POST - Erro: Curso Inexistente",
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/alunos" } },
+        { "contains": { "body": "\"curso\": \"Inexistente\"" } }
+      ],
+      "responses": [{ "is": { "statusCode": 404, "body": { "error": "Curso não encontrado" } } }]
+    },
+    {
+      "_comment": "POST - Sucesso: Criar Aluno",
+      "predicates": [{ "equals": { "method": "POST", "path": "/api/alunos" } }],
+      "responses": [{ "is": { "statusCode": 201, "body": { "id": 101, "status": "Aluno criado com sucesso" } } }]
+    },
+    {
+      "_comment": "GET - Lista todos os alunos",
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/alunos" } }],
+      "responses": [{ "is": { "statusCode": 200, "body": [
+        { "id": 1, "nome": "João Silva", "idade": 15, "curso": "Informatica" },
+        { "id": 2, "nome": "Maria Santos", "idade": 14, "curso": "Artes" }
+      ] } }]
+    },
+    {
+      "_comment": "GET - Aluno Específico (ID 1)",
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/alunos/1" } }],
+      "responses": [{ "is": { "statusCode": 200, "body": { "id": 1, "nome": "João Silva", "idade": 15, "curso": "Informatica" } } }]
+    },
+    {
+      "_comment": "PUT - Atualizar Aluno (ID 1)",
+      "predicates": [{ "equals": { "method": "PUT", "path": "/api/alunos/1" } }],
+      "responses": [{ "is": { "statusCode": 200, "body": { "status": "Dados atualizados" } } }]
+    },
+    {
+      "_comment": "DELETE - Erro: Sem Permissão Admin",
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/alunos/1" } },
+        { "not": { "equals": { "headers": { "Role": "Admin" } } } }
+      ],
+      "responses": [{ "is": { "statusCode": 403, "body": { "error": "Acesso negado: Requer permissões de administração" } } }]
+    },
+    {
+      "_comment": "DELETE - Sucesso: Remover Aluno (ID 1)",
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/alunos/1" } },
+        { "equals": { "headers": { "Role": "Admin" } } }
+      ],
+      "responses": [{ "is": { "statusCode": 204 } }]
+    },
+    {
+      "_comment": "Fallback 404 - Aluno não existe ou Rota inválida",
+      "predicates": [{ "matches": { "path": "/api/alunos/.*" } }],
+      "responses": [{ "is": { "statusCode": 404, "body": { "error": "Aluno não encontrado" } } }]
+    }
+  ]
+}

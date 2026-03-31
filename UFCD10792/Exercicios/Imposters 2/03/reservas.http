@@ -1,0 +1,7 @@
+POST http://127.0.0.1:5040/api/reservas
+Content-Type: application/json
+
+{
+    "cliente": "Carlos",
+    "tipo_quarto": "Standard"
+}

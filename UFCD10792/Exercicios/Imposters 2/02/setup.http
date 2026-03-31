@@ -1,0 +1,55 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 5030,
+  "protocol": "http",
+  "name": "API Gestao de Inventario",
+  "stubs": [
+    {
+      "_comment": "POST - Erro: Quantidade Negativa",
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/produtos" } },
+        { "matches": { "body": "\"quantidade\"\\s*:\\s*-\\d+" } }
+      ],
+      "responses": [{ "is": { "statusCode": 400, "body": { "error": "Valor inválido" } } }]
+    },
+    {
+      "_comment": "PUT - Atualizar Stock (Sucesso)",
+      "predicates": [{ "matches": { "method": "PUT", "path": "/api/produtos/\\d+/stock" } }],
+      "responses": [{ "is": { "statusCode": 200, "body": { "message": "Stock atualizado com sucesso" } } }]
+    },
+    {
+      "_comment": "DELETE - Erro: Stock não é zero (Produto 10)",
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/produtos/10" } }
+      ],
+      "responses": [{ "is": { "statusCode": 400, "body": { "error": "Apenas possível remover se o stock for zero" } } }]
+    },
+    {
+      "_comment": "DELETE - Sucesso: Stock é zero (Produto 20)",
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/produtos/20" } }
+      ],
+      "responses": [{ "is": { "statusCode": 204 } }]
+    },
+    {
+      "_comment": "GET - Detalhes Produto 10",
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/produtos/10" } }],
+      "responses": [{ "is": { "statusCode": 200, "body": { "id": 10, "nome": "Teclado", "stock": 5 } } }]
+    },
+    {
+      "_comment": "GET - Lista Geral",
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/produtos" } }],
+      "responses": [{ "is": { "statusCode": 200, "body": [
+        { "id": 10, "nome": "Teclado", "stock": 5 },
+        { "id": 20, "nome": "Cabo USB", "stock": 0 }
+      ] } }]
+    },
+    {
+      "_comment": "Fallback 404",
+      "predicates": [{ "matches": { "path": "/api/produtos/.*" } }],
+      "responses": [{ "is": { "statusCode": 404, "body": { "error": "Produto não encontrado" } } }]
+    }
+  ]
+}

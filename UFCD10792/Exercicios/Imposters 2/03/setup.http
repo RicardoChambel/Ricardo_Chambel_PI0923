@@ -1,0 +1,29 @@
+POST http://127.0.0.1:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 5040,
+  "protocol": "http",
+  "name": "API_Hotel",
+  "stubs": [
+    {
+      "predicates": [{ "contains": { "body": "invalid_dates" } }],
+      "responses": [{ "is": { "statusCode": 400, "body": { "error": "Datas invalidas" } } }]
+    },
+    {
+      "predicates": [{ "contains": { "body": "Suite Presidencial" } }],
+      "responses": [{ "is": { "statusCode": 409, "body": { "error": "Sem disponibilidade" } } }]
+    },
+    {
+      "predicates": [{ "equals": { "method": "DELETE", "path": "/api/reservas/200" } }],
+      "responses": [{ "is": { "statusCode": 400, "body": { "error": "Nao permitido apos checkin" } } }]
+    },
+    {
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/reservas" } }],
+      "responses": [{ "is": { "statusCode": 200, "body": [{"id": 200, "cliente": "Bruno"}] } }]
+    },
+    {
+      "responses": [{ "is": { "statusCode": 200, "body": { "status": "OK" } } }]
+    }
+  ]
+}

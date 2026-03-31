@@ -1,0 +1,26 @@
+### 1. Criar Produto com Quantidade Negativa (Erro 400)
+POST http://localhost:5030/api/produtos
+Content-Type: application/json
+
+{
+    "nome": "Monitor",
+    "preco": 150,
+    "quantidade": -5
+}
+
+### 2. Atualizar Stock (PUT)
+PUT http://localhost:5030/api/produtos/10/stock
+Content-Type: application/json
+
+{
+    "quantidade": 10
+}
+
+### 3. Tentar apagar produto com stock (ID 10 -> Erro 400)
+DELETE http://localhost:5030/api/produtos/10
+
+### 4. Apagar produto com stock zero (ID 20 -> Sucesso 204)
+DELETE http://localhost:5030/api/produtos/20
+
+### 5. Procurar produto inexistente (Erro 404)
+GET http://localhost:5030/api/produtos/999

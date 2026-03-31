@@ -1,0 +1,24 @@
+{"level":"warn","message":"[mb:2525] Running with --allowInjection set. See http://localhost:2525/docs/security for security info","timestamp":"2026-03-31T08:54:54.536Z"}
+{"level":"info","message":"[mb:2525] mountebank v2.9.3 now taking orders - point your browser to http://localhost:2525/ for help","timestamp":"2026-03-31T08:54:54.542Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2026-03-31T08:54:56.359Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] Open for business...","timestamp":"2026-03-31T08:54:56.368Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] ::1:64101 => GET /api/reservas","timestamp":"2026-03-31T08:55:49.642Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] ::1:49163 => GET /favicon.ico","timestamp":"2026-03-31T08:55:49.661Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] no predicate match, using default response","timestamp":"2026-03-31T08:55:49.663Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] ::1:62920 => GET /api/reservas","timestamp":"2026-03-31T08:55:50.624Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] ::1:53276 => GET /favicon.ico","timestamp":"2026-03-31T08:55:50.643Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] no predicate match, using default response","timestamp":"2026-03-31T08:55:50.644Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] ::1:57388 => GET /api/reservas","timestamp":"2026-03-31T08:56:03.014Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] ::1:51780 => GET /favicon.ico","timestamp":"2026-03-31T08:56:03.032Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] no predicate match, using default response","timestamp":"2026-03-31T08:56:03.033Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] ::1:50898 => GET /api/reservas","timestamp":"2026-03-31T08:57:21.475Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] ::1:51743 => GET /favicon.ico","timestamp":"2026-03-31T08:57:21.500Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] no predicate match, using default response","timestamp":"2026-03-31T08:57:21.501Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters/5040","timestamp":"2026-03-31T08:59:03.859Z"}
+{"level":"info","message":"[http:5040 API Reservas Hotel] Ciao for now","timestamp":"2026-03-31T08:59:03.860Z"}
+{"level":"info","message":"[mb:2525] DELETE /imposters","timestamp":"2026-03-31T08:59:08.514Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2026-03-31T08:59:25.098Z"}
+{"level":"info","message":"[http:5040 API_Hotel] Open for business...","timestamp":"2026-03-31T08:59:25.099Z"}
+{"level":"info","message":"[http:5040 API_Hotel] ::1:51241 => GET /api/reservas","timestamp":"2026-03-31T08:59:57.379Z"}
+{"level":"info","message":"[http:5040 API_Hotel] ::1:59401 => GET /favicon.ico","timestamp":"2026-03-31T08:59:57.394Z"}
+{"level":"info","message":"[mb:2525] Adios - see you soon?","timestamp":"2026-03-31T09:00:58.924Z"}

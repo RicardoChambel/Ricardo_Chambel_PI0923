@@ -1,0 +1,28 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 5015,
+  "protocol": "http",
+  "name": "Exercicio 15 - Fallback 404",
+  "stubs": [
+    {
+      "_comment": "Stub de Fallback para qualquer GET não mapeado",
+      "predicates": [
+        { "deepEquals": { "method": "GET" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 404,
+            "headers": { "Content-Type": "application/json" },
+            "body": {
+              "error": "not_found",
+              "message": "O recurso solicitado não existe neste servidor de teste."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

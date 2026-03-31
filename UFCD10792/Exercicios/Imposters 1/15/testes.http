@@ -1,0 +1,12 @@
+### Teste de GET para um caminho inexistente (Deve dar 404)
+GET http://localhost:5015/api/users/999
+
+###
+
+### Teste de GET para outra rota aleatória (Deve dar 404)
+GET http://localhost:5015/paginas/servicos/detalhes
+
+###
+
+### Teste de GET para a raiz (Deve dar 404)
+GET http://localhost:5015/

@@ -1,0 +1,20 @@
+### Teste 1: Tentar criar tarefa duplicada
+POST http://localhost:5010/api/tasks
+Content-Type: application/json
+
+{
+    "title": "duplicate",
+    "description": "Tarefa que já existe"
+}
+
+###
+
+### Teste 2: Título diferente
+# Por agora, este teste não vai ativar o stub acima
+POST http://localhost:5010/api/tasks
+Content-Type: application/json
+
+{
+    "title": "nova tarefa",
+    "description": "Esta deve funcionar no próximo exercício"
+}

@@ -1,0 +1,51 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 5012,
+  "protocol": "http",
+  "name": "Exercicio 12 - Autenticacao",
+  "stubs": [
+    {
+      "_comment": "Cenário de Sucesso - Credenciais Corretas",
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "method": "POST", "path": "/api/auth" } },
+            { "deepEquals": { "body": { "username": "user1", "password": "pass1" } } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": {
+              "token": "ABC-123-XYZ",
+              "expires_in": 3600
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_comment": "Cenário de Falha - Qualquer outro dado",
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/auth" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 401,
+            "headers": { "Content-Type": "application/json" },
+            "body": {
+              "error": "unauthorized",
+              "message": "Credenciais inválidas!"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

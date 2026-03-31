@@ -1,0 +1,56 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 5010,
+  "protocol": "http",
+  "name": "Exercicios 10 e 11 - Tarefas",
+  "stubs": [
+    {
+      "_comment": "Stub do Exercício 10 (Conflito/Duplicado)",
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "method": "POST", "path": "/api/tasks" } },
+            { "contains": { "body": "duplicate" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 409,
+            "headers": { "Content-Type": "application/json" },
+            "body": { "error": "duplicate_task" }
+          }
+        }
+      ]
+    },
+    {
+      "_comment": "Stub do Exercício 11 (Criação com Sucesso)",
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "method": "POST", "path": "/api/tasks" } },
+            { "equals": { "headers": { "Content-Type": "application/json" } } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 201,
+            "headers": {
+              "Content-Type": "application/json",
+              "Location": "/api/tasks/123"
+            },
+            "body": {
+              "id": 123,
+              "status": "created"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 5014,
+  "protocol": "http",
+  "name": "Exercicio 14 - Content-Type Obrigatorio",
+  "stubs": [
+    {
+      "_comment": "Captura qualquer POST que NÃO tenha Content-Type: application/json",
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "method": "POST" } },
+            { 
+              "not": { 
+                "equals": { "headers": { "Content-Type": "application/json" } } 
+              } 
+            }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 415,
+            "headers": { "Content-Type": "application/json" },
+            "body": {
+              "error": "unsupported_media_type",
+              "message": "O header 'Content-Type: application/json' é obrigatório para todos os pedidos POST."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_comment": "Stub genérico para POSTs corretos (Sucesso padrão)",
+      "predicates": [{ "equals": { "method": "POST" } }],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": { "message": "Pedido aceite com o Content-Type correto." }
+          }
+        }
+      ]
+    }
+  ]
+}

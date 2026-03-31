@@ -1,0 +1,50 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 5008,
+  "protocol": "http",
+  "name": "Exercicio 9",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/temperature", "method": "POST" } },
+            { "equals": { "headers": { "Content-Type": "application/json" } } },
+            { "matches": { "body": "\"value\"\\s*:\\s*\"[^\"]+\"" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 400,
+            "headers": { "Content-Type": "application/json" },
+            "body": "{\"status\": \"error\", \"message\": \"O campo 'value' deve ser um valor numérico.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "path": "/api/temperature", "method": "POST" } },
+            { "equals": { "headers": { "Content-Type": "application/json" } } },
+            { "contains": { "body": "\"value\"" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 201,
+            "headers": { "Content-Type": "application/json" },
+            "body": "{\"status\": \"created\", \"message\": \"Sucesso: medição aceite.\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

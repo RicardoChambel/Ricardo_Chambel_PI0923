@@ -1,0 +1,18 @@
+### Teste Exercício 11: Criar tarefa normal
+POST http://localhost:5010/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Comprar leite",
+    "description": "Ir ao supermercado buscar leite e pão"
+}
+
+###
+
+### Teste Exercício 10
+POST http://localhost:5010/api/tasks
+Content-Type: application/json
+
+{
+    "title": "duplicate"
+}

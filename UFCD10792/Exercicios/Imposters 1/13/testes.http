@@ -1,0 +1,13 @@
+### Teste de acesso com Token Correto
+# Usamos o token que definimos no Exercício 12
+GET http://localhost:5013/api/profile
+Authorization: Bearer ABC-123-XYZ
+
+
+### Teste de acesso com Token Errado
+GET http://localhost:5013/api/profile
+Authorization: Bearer token-falso-123
+
+
+### Teste de acesso sem Header Authorization
+GET http://localhost:5013/api/profile

@@ -1,0 +1,28 @@
+### Teste positivo (Sucesso 201)
+POST http://localhost:5008/api/temperature
+Content-Type: application/json
+
+{
+    "sensor_id": "S-001",
+    "value": 23.5
+}
+
+### Teste negativo (string inválida) (Erro 400)
+# Este teste ativa o predicado 'matches' porque o valor está entre aspas
+POST http://localhost:5008/api/temperature
+Content-Type: application/json
+
+{
+    "sensor_id": "S-001",
+    "value": "vinte-e-dois"
+}
+
+### Teste de que o campo value está presente
+# Apenas para comparação, o imposter 5006 estiver ativo:
+POST http://localhost:5006/api/temperature
+Content-Type: application/json
+
+{
+    "sensor_id": "S-001",
+    "unit": "Celsius"
+}

@@ -1,0 +1,23 @@
+### Teste de POST sem Content-Type (Deve dar 415)
+POST http://localhost:5014/api/qualquer-coisa
+Accept: application/json
+
+{
+    "nome": "teste"
+}
+
+
+### Teste de POST com Content-Type Errado (Deve dar 415)
+POST http://localhost:5014/api/teste
+Content-Type: text/plain
+
+Este é um texto simples, não é JSON.
+
+
+### Teste de POST com Content-Type Correto (Deve dar 200 OK)
+POST http://localhost:5014/api/valido
+Content-Type: application/json
+
+{
+    "status": "ok"
+}

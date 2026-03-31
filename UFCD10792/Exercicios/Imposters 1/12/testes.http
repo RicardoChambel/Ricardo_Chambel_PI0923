@@ -1,0 +1,29 @@
+### Teste de Credenciais Corretas
+POST http://localhost:5012/api/auth
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "password": "pass1"
+}
+
+###
+
+### Teste de Credenciais Erradas
+POST http://localhost:5012/api/auth
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "wrong-password"
+}
+
+###
+
+### Teste de JSON incompleto
+POST http://localhost:5012/api/auth
+Content-Type: application/json
+
+{
+    "username": "user1"
+}

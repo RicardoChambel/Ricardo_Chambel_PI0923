@@ -1,0 +1,22 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "RicardoIvanAPI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Ricardo/request-mountebank": {
+      "get": {
+        "tags": [
+          "Ricardo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}

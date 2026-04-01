@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "RicardoIvanAPI.Controllers.RicardoController",
+    "Method": "GetFromMountebank",
+    "RelativePath": "api/Ricardo/request-mountebank",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

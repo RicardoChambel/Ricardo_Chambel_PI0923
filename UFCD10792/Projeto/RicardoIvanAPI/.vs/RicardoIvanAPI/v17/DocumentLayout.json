@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A43FA1D9-1D69-46D9-BFDA-D0B00F2BB957}|RicardoIvanAPI\\RicardoIvanAPI.csproj|c:\\users\\rikic\\source\\repos\\ricardoivanapi\\ricardoivanapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43FA1D9-1D69-46D9-BFDA-D0B00F2BB957}|RicardoIvanAPI\\RicardoIvanAPI.csproj|solutionrelative:ricardoivanapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43FA1D9-1D69-46D9-BFDA-D0B00F2BB957}|RicardoIvanAPI\\RicardoIvanAPI.csproj|c:\\users\\rikic\\source\\repos\\ricardoivanapi\\ricardoivanapi\\data\\apicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43FA1D9-1D69-46D9-BFDA-D0B00F2BB957}|RicardoIvanAPI\\RicardoIvanAPI.csproj|solutionrelative:ricardoivanapi\\data\\apicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43FA1D9-1D69-46D9-BFDA-D0B00F2BB957}|RicardoIvanAPI\\RicardoIvanAPI.csproj|c:\\users\\rikic\\source\\repos\\ricardoivanapi\\ricardoivanapi\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43FA1D9-1D69-46D9-BFDA-D0B00F2BB957}|RicardoIvanAPI\\RicardoIvanAPI.csproj|solutionrelative:ricardoivanapi\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43FA1D9-1D69-46D9-BFDA-D0B00F2BB957}|RicardoIvanAPI\\RicardoIvanAPI.csproj|c:\\users\\rikic\\source\\repos\\ricardoivanapi\\ricardoivanapi\\controllers\\exerciciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43FA1D9-1D69-46D9-BFDA-D0B00F2BB957}|RicardoIvanAPI\\RicardoIvanAPI.csproj|solutionrelative:ricardoivanapi\\controllers\\exerciciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ecb7191a-597b-41f5-9843-03a4cf275dde}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "APIcontext.cs",
+              "DocumentMoniker": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\RicardoIvanAPI\\Data\\APIcontext.cs",
+              "RelativeDocumentMoniker": "RicardoIvanAPI\\Data\\APIcontext.cs",
+              "ToolTip": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\RicardoIvanAPI\\Data\\APIcontext.cs",
+              "RelativeToolTip": "RicardoIvanAPI\\Data\\APIcontext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T11:21:21.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\RicardoIvanAPI\\Models\\Item.cs",
+              "RelativeDocumentMoniker": "RicardoIvanAPI\\Models\\Item.cs",
+              "ToolTip": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\RicardoIvanAPI\\Models\\Item.cs",
+              "RelativeToolTip": "RicardoIvanAPI\\Models\\Item.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T11:20:53.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExercicioController.cs",
+              "DocumentMoniker": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\RicardoIvanAPI\\Controllers\\ExercicioController.cs",
+              "RelativeDocumentMoniker": "RicardoIvanAPI\\Controllers\\ExercicioController.cs",
+              "ToolTip": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\RicardoIvanAPI\\Controllers\\ExercicioController.cs",
+              "RelativeToolTip": "RicardoIvanAPI\\Controllers\\ExercicioController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T11:15:49.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\RicardoIvanAPI\\Program.cs",
+              "RelativeDocumentMoniker": "RicardoIvanAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\rikic\\source\\repos\\RicardoIvanAPI\\RicardoIvanAPI\\Program.cs",
+              "RelativeToolTip": "RicardoIvanAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T11:15:11.798Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

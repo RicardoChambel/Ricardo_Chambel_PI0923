@@ -1,6 +1,6 @@
 # PowerChordAPI
 
-API REST em **ASP.NET Core 8** para gestão de concertos e venda de bilhetes da banda fictícia **Power Chord**.
+API REST em **ASP.NET Core 8** para gestão de concertos e venda de bilhetes da banda **Power Chord**.
 
 Esta versão foi preparada para correr **sem Docker**, diretamente no Windows com Visual Studio ou terminal. O projeto mantém os componentes pedidos na tarefa: API REST, frontend, JWT, Swagger, base de dados, Redis, Polly, imposter Mountebank, scripts SQL, Postman e testes.
 
@@ -600,6 +600,4 @@ A API também consegue criar as tabelas automaticamente através do Entity Frame
 
 ## Autor
 
-Projeto desenvolvido para a tarefa final de criação de API REST consumida por Website / Aplicação Móvel.
-
-Tema usado: **Power Chord Band — venda de bilhetes e gestão de concertos**.
+Projeto desenvolvido por Ricardo Chambel e Ivan Abasov para a tarefa final de criação de API REST consumida por Website / Aplicação Móvel.

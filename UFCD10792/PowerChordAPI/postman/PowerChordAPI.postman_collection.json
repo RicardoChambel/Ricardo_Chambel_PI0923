@@ -1,0 +1,163 @@
+{
+  "info": {
+    "name": "PowerChordAPI",
+    "description": "Coleção de testes para a API PowerChordAPI: autenticação JWT, concertos e bilhetes.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5163"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"teste@powerchord.com\",\n  \"passwordHash\": \"123456\"\n}"
+        },
+        "url": "{{baseUrl}}/api/Auth/register"
+      }
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "  const json = pm.response.json();",
+              "  pm.collectionVariables.set('token', json.token);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@powerchord.com\",\n  \"passwordHash\": \"123456\"\n}"
+        },
+        "url": "{{baseUrl}}/api/Auth/login"
+      }
+    },
+    {
+      "name": "Me",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/Auth/me"
+      }
+    },
+    {
+      "name": "Get Concerts",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/Concert"
+      }
+    },
+    {
+      "name": "Get Inventory From Imposter",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/Inventory/POWERCHORD-TICKET"
+      }
+    },
+    {
+      "name": "Get Concert By Id",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/Concert/1"
+      }
+    },
+    {
+      "name": "Create Concert",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Power Chord Test Show\",\n  \"location\": \"Setúbal\",\n  \"date\": \"2026-09-20T21:00:00\",\n  \"price\": 15\n}"
+        },
+        "url": "{{baseUrl}}/api/Concert"
+      }
+    },
+    {
+      "name": "Buy Ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"concertId\": 1,\n  \"quantity\": 2\n}"
+        },
+        "url": "{{baseUrl}}/api/Ticket"
+      }
+    },
+    {
+      "name": "Get Tickets",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/Ticket"
+      }
+    }
+  ]
+}

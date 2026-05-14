@@ -1,0 +1,730 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    transition: .2s;
+}
+
+:root {
+    --red:        #c0392b;
+    --red-bright: #e74c3c;
+    --red-glow:   rgba(214, 46, 27, 0.35);
+    --gold:       #c9a84c;
+    --gold-dim:   rgba(201, 168, 76, 0.15);
+    --bg:         #0a0a0a;
+    --surface:    #111111;
+    --surface-2:  #181818;
+    --surface-3:  #222222;
+    --border:     rgba(255,255,255,0.07);
+    --border-h:   rgba(255,255,255,0.15);
+    --text:       #f0ece4;
+    --text-2:     #9a948a;
+    --text-3:     #5a5550;
+    --radius:     6px;
+    --radius-lg:  10px;
+    --transition: 0.2s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg);
+    background: url(images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    backdrop-filter: blur(5px) brightness(30%);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    box-shadow: 0 0 50px 50px black inset;
+}
+
+/* ── Texture Overlays ── */
+.noise {
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 0;
+}
+.vignette {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.8) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Header ── */
+header {
+    position: relative;
+    z-index: 10;
+    padding: 24px 40px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(192,57,43,0.06) 0%, transparent 100%);
+}
+
+.header-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-bolt {
+    width: 22px;
+    height: 37px;
+    color: var(--red-bright);
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 8px var(--red-glow));
+    animation: bolt-flicker 4s ease-in-out infinite;
+}
+
+@keyframes bolt-flicker {
+    0%, 90%, 100% { opacity: 1; }
+    92%            { opacity: 0.6; }
+    94%            { opacity: 1; }
+    96%            { opacity: 0.7; }
+}
+
+h1 {
+    font-family: 'New Rocker', system-ui;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    text-shadow: 0 0 40px var(--red-glow);
+}
+
+.tagline {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-top: 3px;
+}
+
+.header-status {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2);
+    letter-spacing: 0.05em;
+}
+
+/* ── Main Layout ── */
+main {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 300px 1fr 260px;
+    grid-template-areas: "account concerts buy";
+    gap: 0;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    min-height: calc(100vh - 90px);
+}
+
+/* ── Panels ── */
+.panel {
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 0;
+}
+.panel:last-child { border-right: none; }
+.panel--account  { grid-area: account; }
+.panel--concerts { grid-area: concerts; }
+.panel--buy      { grid-area: buy; border-left: 1px solid var(--border); border-right: none; }
+
+.panel__section {
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+}
+.panel__section:last-child { border-bottom: none; }
+
+.panel__section--user {
+    background: linear-gradient(135deg, rgba(192,57,43,0.08) 0%, transparent 70%);
+}
+
+/* ── Section titles ── */
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    color: var(--text-2);
+    margin-bottom: 16px;
+}
+
+/* ── Auth Tabs ── */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-3);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color var(--transition), border-color var(--transition);
+}
+.tab:hover { color: var(--text); }
+.tab--active {
+    color: var(--red-bright);
+    border-bottom-color: var(--red-bright);
+}
+
+.tab-content--hidden { display: none; }
+
+/* ── Form Fields ── */
+.field {
+    margin-bottom: 14px;
+}
+
+label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 6px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="text"] {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
+    transition: border-color var(--transition), background var(--transition);
+    -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+input:hover { border-color: var(--border-h); }
+input:focus {
+    border-color: var(--red);
+    background: var(--surface-3);
+    box-shadow: 0 0 0 3px var(--red-glow);
+}
+input::placeholder { color: var(--text-3); }
+
+/* Password strength bar */
+.password-strength {
+    height: 2px;
+    background: var(--surface-3);
+    border-radius: 2px;
+    margin-top: 6px;
+    overflow: hidden;
+    position: relative;
+}
+.password-strength::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: var(--strength, 0%);
+    background: var(--strength-color, var(--red));
+    border-radius: 2px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+/* ── Buttons ── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--transition);
+    width: 100%;
+}
+
+.btn svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.btn--primary {
+    background: var(--red);
+    color: #fff;
+    border: 1px solid var(--red);
+}
+.btn--primary:hover {
+    background: var(--red-bright);
+    border-color: var(--red-bright);
+    box-shadow: 0 0 20px var(--red-glow);
+}
+.btn--primary:active { transform: translateY(0); }
+
+.btn--outline {
+    background: transparent;
+    color: var(--text-2);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    width: auto;
+}
+.btn--outline:hover {
+    border-color: var(--border-h);
+    color: var(--text);
+}
+
+.btn--ghost {
+    background: var(--surface-3);
+    color: var(--text-2);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    padding: 8px 14px;
+    margin-top: 12px;
+}
+.btn--ghost:hover {
+    color: var(--red-bright);
+    border-color: var(--red);
+}
+
+.btn--buy {
+    margin-top: 4px;
+}
+.btn--buy svg { width: 16px; height: 16px; }
+
+/* ── Quantity Control ── */
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.qty-control input {
+    border: none;
+    border-radius: 0;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    text-align: center;
+    flex: 1;
+    box-shadow: none !important;
+}
+.qty-control input:focus { box-shadow: none; }
+
+.qty-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--surface-2);
+    border: none;
+    color: var(--text-2);
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+.qty-btn:hover { background: var(--surface-3); color: var(--text); }
+
+/* ── Price Preview ── */
+.price-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    margin-bottom: 12px;
+}
+.price-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+.price-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+}
+
+/* ── User Badge ── */
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px var(--red-glow);
+}
+.user-name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+}
+.user-role {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-top: 1px;
+}
+
+/* ── Concerts Area ── */
+.concerts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--border);
+}
+.concerts-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--text);
+}
+
+.concerts-grid {
+    padding: 20px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Concert Cards */
+.concert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: start;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.concert-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--red);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+    border-radius: 0 0 0 0;
+}
+
+.concert-card:hover {
+    border-color: var(--border-h);
+    background: var(--surface-2);
+    transform: translateX(3px);
+}
+.concert-card:hover::before { transform: scaleY(1); }
+
+.concert-card.selected {
+    border-color: var(--red);
+    background: rgba(192,57,43,0.05);
+}
+.concert-card.selected::before { transform: scaleY(1); }
+
+.concert-artist {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.concert-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.concert-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+.concert-tag svg {
+    width: 11px;
+    height: 11px;
+    color: var(--text-3);
+}
+
+.concert-price-badge {
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    text-align: right;
+    flex-shrink: 0;
+}
+.concert-price-badge .price-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 0.04em;
+}
+.concert-price-badge .price-unit {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    text-align: center;
+}
+
+.concert-id-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+}
+
+/* Availability bar */
+.avail-bar {
+    height: 2px;
+    background: var(--surface-3);
+    border-radius: 2px;
+    margin-top: 10px;
+    overflow: hidden;
+    grid-column: 1 / -1;
+}
+.avail-bar-fill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 2px;
+    transition: width 0.6s ease;
+}
+.avail-bar-fill.avail--low { background: var(--red-bright); }
+.avail-bar-fill.avail--ok  { background: #27ae60; }
+
+/* Skeleton loader */
+.skeleton {
+    background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    border-radius: var(--radius-lg);
+    height: 90px;
+}
+@keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ── Ticket List ── */
+.ticket-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.ticket-item {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    font-size: 13px;
+}
+.ticket-item strong {
+    display: block;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+.ticket-item span { color: var(--text-3); }
+
+/* ── Info List ── */
+.info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.info-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2);
+}
+.info-list svg {
+    width: 13px;
+    height: 13px;
+    color: var(--text-3);
+    flex-shrink: 0;
+}
+
+/* ── Empty State ── */
+.empty-state {
+    font-size: 13px;
+    color: var(--text-3);
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* ── Toast Messages ── */
+#messageDiv {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.message {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 16px;
+    border-radius: var(--radius-lg);
+    min-width: 260px;
+    max-width: 340px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.message.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+.message.success {
+    border-left: 3px solid #27ae60;
+}
+.message.error {
+    border-left: 3px solid var(--red-bright);
+}
+.message.info {
+    border-left: 3px solid var(--gold);
+}
+
+.message-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+.message.success .message-icon { color: #27ae60; }
+.message.error .message-icon   { color: var(--red-bright); }
+.message.info .message-icon    { color: var(--gold); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--surface-3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-h); }
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+    main {
+        grid-template-columns: 260px 1fr;
+        grid-template-areas:
+            "account concerts"
+            "buy     concerts";
+    }
+    .panel--buy { border-left: none; border-top: 1px solid var(--border); border-right: none; }
+}
+
+@media (max-width: 720px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-areas: "account" "concerts" "buy";
+    }
+    header { padding: 16px 20px; }
+    .panel { border-right: none; border-bottom: 1px solid var(--border); }
+    .concerts-header,
+    .concerts-grid { padding-left: 20px; padding-right: 20px; }
+}

@@ -1,0 +1,59 @@
+{
+  "imposters": [
+    {
+      "port": 3000,
+      "protocol": "http",
+      "stubs": [
+        {
+          "predicates": [
+            {
+              "equals": {
+                "method": "POST",
+                "path": "/payments"
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "status": "success",
+                  "message": "Pagamento aprovado pelo mock"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "startsWith": {
+                "method": "GET",
+                "path": "/inventory/"
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "sku": "POWERCHORD-TICKET",
+                  "available": true,
+                  "quantity": 250
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

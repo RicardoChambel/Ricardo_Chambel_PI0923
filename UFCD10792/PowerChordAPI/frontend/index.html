@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Chord Tickets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="noise"></div>
+    <div class="vignette"></div>
+
+    <div id="messageDiv" role="status" aria-live="polite"></div>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo-wrap">
+                <svg class="logo-bolt" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 0L0 22H10L6 40L24 14H13L14 0Z" fill="currentColor"/>
+                </svg>
+                <div>
+                    <h1>Power Chord</h1>
+                    <p class="tagline">Venda oficial de bilhetes para concertos</p>
+                </div>
+            </div>
+            <div class="header-status" id="headerStatus"></div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="panel panel--account">
+
+            <div class="panel__section" id="authSection">
+                <div class="tabs">
+                    <button class="tab tab--active" onclick="switchTab('register')">Registo</button>
+                    <button class="tab" onclick="switchTab('login')">Login</button>
+                </div>
+
+                <div id="tabRegister" class="tab-content">
+                    <div class="field">
+                        <label for="registerEmail">Email</label>
+                        <input id="registerEmail" type="email" placeholder="nome@exemplo.com" autocomplete="email">
+                    </div>
+                    <div class="field">
+                        <label for="registerPassword">Password</label>
+                        <input id="registerPassword" type="password" placeholder="••••••••" autocomplete="new-password">
+                        <div class="password-strength" id="strengthBar"></div>
+                    </div>
+                    <button class="btn btn--primary" onclick="register()">
+                        <span>Criar conta</span>
+                        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+
+                <div id="tabLogin" class="tab-content tab-content--hidden">
+                    <div class="field">
+                        <label for="loginEmail">Email</label>
+                        <input id="loginEmail" type="email" placeholder="nome@exemplo.com" autocomplete="email">
+                    </div>
+                    <div class="field">
+                        <label for="loginPassword">Password</label>
+                        <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password">
+                    </div>
+                    <button class="btn btn--primary" onclick="login()">
+                        <span>Entrar</span>
+                        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel__section panel__section--user" id="userSection" style="display:none">
+                <div class="user-badge">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div>
+                        <p class="user-name" id="userName">—</p>
+                        <p class="user-role">Membro</p>
+                    </div>
+                </div>
+                <button class="btn btn--ghost" onclick="logout()">Terminar sessão</button>
+            </div>
+
+            <div class="panel__section">
+                <h3 class="section-title">Os meus bilhetes</h3>
+                <div id="myTickets" class="ticket-list">
+                    <p class="empty-state">Sem bilhetes ainda.</p>
+                </div>
+            </div>
+
+        </aside>
+
+        <section class="panel panel--concerts">
+
+            <div class="concerts-header">
+                <h2>Concertos disponíveis</h2>
+                <button class="btn btn--outline" onclick="loadConcerts()" id="loadBtn">
+                    <svg viewBox="0 0 16 16" fill="none"><path d="M14 8A6 6 0 1 1 8 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 2v4h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Atualizar</span>
+                </button>
+            </div>
+
+            <div id="concerts" class="concerts-grid"></div>
+
+        </section>
+
+        <aside class="panel panel--buy">
+
+            <div class="panel__section">
+                <h3 class="section-title">Comprar bilhete</h3>
+                <div class="field">
+                    <label for="concertId">ID do concerto</label>
+                    <input id="concertId" placeholder="Ex: 42" type="number" min="1">
+                </div>
+                <div class="field">
+                    <label for="quantity">Quantidade</label>
+                    <div class="qty-control">
+                        <button class="qty-btn" onclick="adjustQty(-1)">−</button>
+                        <input id="quantity" type="number" value="1" min="1" max="10">
+                        <button class="qty-btn" onclick="adjustQty(1)">+</button>
+                    </div>
+                </div>
+                <div class="price-preview" id="pricePreview" style="display:none">
+                    <span class="price-label">Preço Total</span>
+                    <span class="price-value" id="priceValue">—</span>
+                </div>
+                <button class="btn btn--primary btn--buy" onclick="buyTicket()">
+                    <svg viewBox="0 0 20 20" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 4h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Comprar bilhete</span>
+                </button>
+            </div>
+
+            <div class="panel__section">
+                <h3 class="section-title">Informação</h3>
+                <ul class="info-list">
+                    <li>
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 7v4M8 5.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        Bilhetes não reembolsáveis
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Máximo 10 por compra
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M5 4V3a3 3 0 0 1 6 0v1" stroke="currentColor" stroke-width="1.2"/></svg>
+                        Pagamento seguro
+                    </li>
+                </ul>
+            </div>
+
+        </aside>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
